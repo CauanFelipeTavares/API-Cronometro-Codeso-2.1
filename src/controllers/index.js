@@ -18,9 +18,9 @@ router.get('/Get/:userId', async (req,res) => {
 
 router.put('/put/:userId', async (req,res) => {
     try {
-        const { dia, mes } = req.body
+        const { hora, dia, mes } = req.body
 
-        const config = await ConfigModel.findByIdAndUpdate(req.params.userId, {dia, mes}, { new: true })
+        const config = await ConfigModel.findByIdAndUpdate(req.params.userId, {hora, dia, mes}, { new: true })
 
         return res.send({ config })
 
@@ -29,5 +29,6 @@ router.put('/put/:userId', async (req,res) => {
         return res.status(400).send({ error: 'Não foi possível atualizar sua configuração'})
     }
 })
+
 
 module.exports = app => app.use('/configTime', router)

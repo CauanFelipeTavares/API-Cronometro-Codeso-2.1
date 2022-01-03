@@ -1,15 +1,23 @@
 const mongoose = require('../database/index')
 
-const Dia = parseInt((new Date).getUTCDate())
-const Mes = parseInt((new Date).getMonth() + 1)
+var Dia = parseInt((new Date).getUTCDate())
+var Mes = parseInt((new Date).getMonth() + 1)
+var ExactDate = parseInt((new Date).getUTCMinutes())
+console.log(Dia)
+console.log(Mes)
+console.log(ExactDate)
 
 
-const DataSchema = new mongoose.Schema({
+var DataSchema = new mongoose.Schema({
     dia: {
         type: Number,
         require: true,
     },
     mes: {
+        type: Number,
+        require: true,
+    },
+    hora: {
         type: Number,
         require: true,
     },
@@ -20,8 +28,13 @@ const DataSchema = new mongoose.Schema({
     MesDeAtualizacao: {
         type: Number,
         default: Mes,
-    }
+    },
+    MinutoDeAtualizacao: {
+        type: Number,
+        default: ExactDate,
+    },
 })
+
 
 const Data = mongoose.model('Data', DataSchema)
 
