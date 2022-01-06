@@ -21,6 +21,10 @@ var DataSchema = new mongoose.Schema({
         type: Number,
         require: true,
     },
+    minuto: {
+        type: Number,
+        require: true,
+    },
     DiaDeAtualizacao: {
         type: Number,
         default: Dia,
